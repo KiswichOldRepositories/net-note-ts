@@ -55,10 +55,6 @@ var Func = {
                 Func.showSignup();
             });
         },
-        showNotePage: function () {
-
-
-        },
         getCookie: function (cname) {
             var name = cname + "=";
             var ca = document.cookie.split(';');

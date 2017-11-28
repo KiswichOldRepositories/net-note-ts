@@ -43,5 +43,10 @@ export class SignUpPage {
         this.$page.appendTo(this.select);
     }
 
+    //事件集
+    /**
+     * 1.登录按钮事件
+     */
+
 
 }
