@@ -1,292 +1,297 @@
-[
-  {
-    "id": 2,
-    "name": "zqw111",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 0
-  },
-  {
-    "id": 4,
-    "name": "eee11",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 2
-  },
-  {
-    "id": 5,
-    "name": "jhkhjkjh525",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 4
-  },
-  {
-    "id": 17,
-    "name": "5252525",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 4
-  },
-  {
-    "id": 19,
-    "name": "ffdfdgfd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 5
-  },
-  {
-    "id": 20,
-    "name": "s ",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 17
-  },
-  {
-    "id": 21,
-    "name": "1",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 19
-  },
-  {
-    "id": 25,
-    "name": "搜索",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 19
-  },
-  {
-    "id": 30,
-    "name": "hg",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": true,
-    "pid": 19
-  },
-  {
-    "id": 1,
-    "name": "www",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 5
-  },
-  {
-    "id": 12,
-    "name": "少时诵诗书tt",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 17
-  },
-  {
-    "id": 13,
-    "name": "rrrrrtyyy",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 17
-  },
-  {
-    "id": 14,
-    "name": "qwqwqwqwssssyuyu",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 19
-  },
-  {
-    "id": 15,
-    "name": "烧烧烧",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 17
-  },
-  {
-    "id": 16,
-    "name": "呃呃呃额外",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 17
-  },
-  {
-    "id": 17,
-    "name": "111111111111111111",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 17
-  },
-  {
-    "id": 18,
-    "name": "sss",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 20
-  },
-  {
-    "id": 27,
-    "name": "sdsdsd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 30
-  },
-  {
-    "id": 28,
-    "name": "ff",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 30
-  },
-  {
-    "id": 29,
-    "name": "dd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 30
-  },
-  {
-    "id": 30,
-    "name": "dd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 31,
-    "name": "bbb",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 32,
-    "name": "ssd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 33,
-    "name": "f",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 34,
-    "name": "dddd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 35,
-    "name": "hth",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 36,
-    "name": "dsd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 37,
-    "name": "dsddsd",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  },
-  {
-    "id": 38,
-    "name": "辅导费地方",
-    "checked": false,
-    "childNum": null,
-    "dataType": null,
-    "data": null,
-    "isParent": false,
-    "pid": 25
-  }
-]
+{
+  "code": 0,
+
+  "message":"bo",
+  "data": [
+    {
+      "id": 2,
+      "name": "zqw111",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 0
+    },
+    {
+      "id": 4,
+      "name": "eee11",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 2
+    },
+    {
+      "id": 5,
+      "name": "jhkhjkjh525",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 4
+    },
+    {
+      "id": 17,
+      "name": "5252525",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 4
+    },
+    {
+      "id": 19,
+      "name": "ffdfdgfd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 5
+    },
+    {
+      "id": 20,
+      "name": "s ",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 17
+    },
+    {
+      "id": 21,
+      "name": "1",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 19
+    },
+    {
+      "id": 25,
+      "name": "搜索",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 19
+    },
+    {
+      "id": 30,
+      "name": "hg",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": true,
+      "pid": 19
+    },
+    {
+      "id": 1,
+      "name": "www",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 5
+    },
+    {
+      "id": 12,
+      "name": "少时诵诗书tt",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 17
+    },
+    {
+      "id": 13,
+      "name": "rrrrrtyyy",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 17
+    },
+    {
+      "id": 14,
+      "name": "qwqwqwqwssssyuyu",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 19
+    },
+    {
+      "id": 15,
+      "name": "烧烧烧",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 17
+    },
+    {
+      "id": 16,
+      "name": "呃呃呃额外",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 17
+    },
+    {
+      "id": 17,
+      "name": "111111111111111111",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 17
+    },
+    {
+      "id": 18,
+      "name": "sss",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 20
+    },
+    {
+      "id": 27,
+      "name": "sdsdsd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 30
+    },
+    {
+      "id": 28,
+      "name": "ff",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 30
+    },
+    {
+      "id": 29,
+      "name": "dd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 30
+    },
+    {
+      "id": 30,
+      "name": "dd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 31,
+      "name": "bbb",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 32,
+      "name": "ssd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 33,
+      "name": "f",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 34,
+      "name": "dddd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 35,
+      "name": "hth",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 36,
+      "name": "dsd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 37,
+      "name": "dsddsd",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    },
+    {
+      "id": 38,
+      "name": "辅导费地方",
+      "checked": true,
+      "childNum": null,
+      "dataType": null,
+      "data": null,
+      "isParent": false,
+      "pid": 25
+    }
+  ]
+}

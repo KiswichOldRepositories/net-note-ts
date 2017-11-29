@@ -1,5 +1,5 @@
 "use strict";
-var SendData = (function () {
+var SendData = /** @class */ (function () {
     function SendData() {
     }
     return SendData;

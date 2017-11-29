@@ -1,5 +1,6 @@
 
-import {AjaxResult} from "../js/lib/scooper.ajax";
+
+import {AjaxResult} from "./scooper.ajax";
 
 export class Util{
     /**

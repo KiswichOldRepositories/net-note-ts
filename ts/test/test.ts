@@ -1,9 +1,10 @@
-import {Head} from "../view/head";
-// import {JQuery} from "../declarations/jquery.ztree/index";
+/// <amd-dependency path="ztree" />
 
-import $ = require("jquery");
-import {NotePage} from "../page/notePage";
-/// <amd-dependency path="../declarations/jquery.ztree" />
+import {Head} from "../view/head.js";
+import * as $ from 'jquery';
+import {NotePage} from "../page/notePage.js";
+import {Content} from "../view/content.js";
+
 
 interface  Map<T>{
     [key:string]:T;
@@ -30,31 +31,11 @@ head.build();
 // let notePage = new NotePage("#content");
 // $.fn.zTree.init($("#noteTree"));
 
-var setting = {
-    data: {
-        simpleData: {
-            enable: true
-//                  idKey:"id",
-//                  pIdKey:"pId",
-        }
-    }
-    ,async: {
-        enable: true,
-        url:"../../../resource/ztree.json",
-        autoParam:["id", "name"],
-        otherParam:{"otherParam":"zTreeAsyncTest"},
-//              dataType: "text",//默认text
-//              type:"get",//默认post
-       // dataFilter: filter  //异步返回后经过Filter
-    }
-    ,callback:{
-        asyncSuccess: ()=>{
 
-        },//异步加载成功的fun
+let content = new Content("body");
 
-    }
-};
- $.fn.zTree.init($("#noteTree",setting));
+let notePage = new NotePage(".content");
+notePage.freshTree("../resource/ztree.json");
 
 
 

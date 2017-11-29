@@ -1,13 +1,14 @@
 /**
  * 页面用来展示笔记本的主页面
  */
-import { EasyUIModule } from 'ts/declarations/easyui/components/easyui/easyui.module';
+import {Ajax, AjaxResult} from "scooper.ajax";
 
-export class NotePage{
-    public $select:JQuery;
+
+export class NotePage {
+    public $select: JQuery;
     //笔记本主页面
-    public $notePage =$(` <div class=\"col-xs-3 tree-div \">
-                           <div class=\"text-title\" id=\"textTitle1\">
+    public $notePage = $(`<div class=\"col-xs-3 tree-div \">
+                            <div class=\"text-title\" id=\"textTitle1\">
                                <div class=\"form-group\" style='margin-bottom:0;min-height: 50px'>
                                     <div class=\"btn-group pull-right\" >
                                         <button type=\"button\" class=\"btn btn-default dropdown-toggle btn-undef\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">
@@ -55,7 +56,6 @@ export class NotePage{
                               </div>
                           </div>
                           <div class=\"col-xs-8\" id=\"textarea1\" >
-             
                           </div>`);
     //笔记本编辑基础页面
     public $textArea = $(`<div class=\"form-group text-title\" id=\"textTitle\" >
@@ -113,7 +113,7 @@ export class NotePage{
      * 这个select一般是 "#content"
      * @param {string} select
      */
-    constructor(select:string){
+    constructor(select: string) {
         this.$notePage.appendTo(select);
         this.$select = $(select);
     }
@@ -121,70 +121,165 @@ export class NotePage{
     /**
      * 绑定笔记基础页面的事件
      */
-    public build():void{
+    public build(): void {
 
     }
 
     /**
      * 查看笔记 （擦除原窗口 加入该窗口 绑定按钮事件）
      */
-    public viewNote(){
+    public viewNote() {
 
     }
 
     /**
      * 笔记编辑页面 （擦除原窗口 加入该窗口 绑定按钮事件）
      */
-    public editNote(){
+    public editNote() {
 
     }
 
     /**
      * 笔记新建页面 （擦除原窗口 加入该窗口 绑定按钮事件）
      */
-    public newNote(){
+    public newNote() {
+        let url:string = "22";
+        new Ajax("").request(url)
+            .then((result:AjaxResult)=>{
 
+            });
     }
 
     /**
-     * 刷新树
+     * 刷新树 传入与服务器交互的url
      */
-    public freshTree():void{
-        let $tree = $("#tt3");
+    public freshTree(url: string): void {
+        let setting = {
+            data: {
+                simpleData: {
+                    enable: true,
+                    idKey: "id",
+                    pIdKey: "pid",
+                    rootPId: 0
+                }
+            }, async: {
+                enable: false,
+            }
+            , callback: {
+                onDblClick:this.bindTreeDoubleClick,
+                asyncSuccess: (data: any) => {
+                    console.log(data);
+                },//异步加载成功的fun
+            }
+        };
+        let ajax = new Ajax("");
+        //ajax.setPath("tree", url);
+        let promise = ajax.request(url).then((result:AjaxResult)=>{
+            $.fn.zTree.init($("#noteTree"), setting,result.data);
+        });
+
+
     }
 
     //主界面事件集
     /**
      * 1.树的双击事件
      */
+    public bindTreeDoubleClick(event:any,treeId:string,treeNode:any):void{
+        // console.log(event);
+        // console.log(treeId);
+        // console.log(treeNode);
+        if(treeNode.id %2 == 1){//ztree已经做了展开功能
+        }else if (treeNode.id%2 == 0){
+            //标记
+            //触发浏览一个笔记的事件
+
+
+            //还需绑定一些东西
+
+        }
+    }
 
     /**
      * 2.新建按钮事件（是否保存？->新建笔记界面）
      */
+    public bindNewNote():void{
+        //标记
+        //先判断是否在编辑状态
+
+        //若在 则提示是否需要保存
+
+        //然后打开一个新的编辑页面
+    }
 
     /**
      * 3.编辑按钮事件（是否保存?->编辑笔记界面 || 编辑目录名）
      */
+    public bindEditNote():void{
+        //标记
+        //先判断是编辑目录还是笔记
+
+
+        //先判断是否在编辑状态
+
+        //若在则保存
+
+        //然后打开点击笔记的编辑页面
+
+    }
 
     /**
      * 4.删除按钮事件（确认删除?->删除）
      */
+    public bindDelete():void{
+        //标记
+        //判断该笔记是否在打开状态
+
+        //在则提示 不在则删除
+
+    }
 
     /**
      * 5.回笔记中心按钮事件（刷新树为笔记树）
      */
+    public bindGoBack():void{
+        //标记
+        //刷新树
+
+    }
+
 
     /**
      * 6.搜索事件（刷新树为搜索笔记树）
      */
+    public bindSearch():void{
+        //标记
+        //判断空值
+
+        //提交搜索
+
+        //根据结果刷新树
+    }
 
     /**
      * 7.添加分享按钮事件
      */
+    public bindAddShare():void{
+        //标记
+        //检查是否选中
+
+        //提交服务器
+
+    }
+
 
     /**
      * 8.查看分享按钮事件
      */
+    public bindShowShare():void{
+        //标记
+        //提交 刷新树
+    }
 
     /**
      * 9.删除分享按钮事件
@@ -193,7 +288,6 @@ export class NotePage{
     /**
      * 10.黏贴分享链接事件
      */
-
 
 
     //编辑界面事件集
@@ -213,7 +307,6 @@ export class NotePage{
     /**
      * 1.附件下载按钮事件
      */
-
 
 
 }

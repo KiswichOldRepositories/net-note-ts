@@ -1,10 +1,10 @@
-define(["require", "exports", "jquery", "es6-promise"], function (require, exports, $) {
+define(["require", "exports"], function (require, exports) {
     "use strict";
     exports.__esModule = true;
     /**
      * 用来处理网页头部的函数
      */
-    var Head = (function () {
+    var Head = /** @class */ (function () {
         /**
          * 传入参数为某一个选择器
          * @param {string} select

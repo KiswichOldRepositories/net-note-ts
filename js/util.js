@@ -1,7 +1,7 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     exports.__esModule = true;
-    var Util = (function () {
+    var Util = /** @class */ (function () {
         function Util() {
         }
         /**
@@ -38,7 +38,7 @@ define(["require", "exports"], function (require, exports) {
         Util.prototype.deleteCookie = function (cname) {
             this.setCookie(cname, "", -1);
         };
-        Util.signup = function (username, password, success) {
+        Util.signup = function (username, password) {
             var form = new FormData();
             form.append("username", username);
             form.append("password", password);
@@ -50,7 +50,20 @@ define(["require", "exports"], function (require, exports) {
                 processData: false,
                 contentType: false
             }).done(function (data) {
-            }).fail(function () {
+                if (data.code === 0) {
+                    // Func.showNotePage();
+                    // $("#signup").remove();
+                    // $("#signin").remove();
+                    // $("#nav-begin").append("<li class=\"nav-tab-def\"><a href=\"javascript:void(0)\" id=\"signout\">退出登录</a></li>");
+                    // $("#nav-begin").append("<li class=\"nav-tab-def\"><a href=\"javascript:void(0)\" id='signText'>欢迎回来  " + username + "</a></li>");
+                    // Func.logout();
+                    // Func.setCookie("book", username, 7);
+                    // Func.setCookie("cake", password, 7);
+                }
+                else {
+                    window.alert("账号或密码错误");
+                }
+            }).fail(function (data) {
             });
         };
         return Util;

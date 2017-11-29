@@ -1,8 +1,4 @@
 
-
-import "es6-promise";
-import $ = require("jquery");
-
 interface Map<T> {
     [key: string]: T;
 }

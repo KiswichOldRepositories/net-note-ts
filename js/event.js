@@ -4,7 +4,7 @@ define(["require", "exports"], function (require, exports) {
     /**
      * 绑定事件
      */
-    var Event = (function () {
+    var Event = /** @class */ (function () {
         function Event() {
         }
         /**
