@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.base.AttachDao">
+    <!--简单查询 -->
+    <resultMap type="Attach" id="AttachResultMap" >
+        <id property="id" column="attach_id"/>
+        <result property="fileName" column="attach_filename"/>
+        <result property="size" column="attach_size"/>
+        <result property="noteId" column="attach_note_id"/>
+        <result property="userId" column="attach_user_id"/>
+        <result property="netDiskId" column="attach_net_disk_id"/>
+    </resultMap>
+
+    <select id="selectAttachsByNoteId" parameterType="int" resultMap="AttachResultMap">
+        SELECT * FROM T_ATTACH
+        WHERE attach_note_id=#{value}
+    </select>
+
+    <delete id="deleteAttachById" parameterType="int">
+        DELETE  FROM  T_ATTACH
+        WHERE  attach_id=#{value}
+    </delete>
+
+    <select id="selectAttachById" parameterType="int" resultMap="AttachResultMap">
+        SELECT * FROM  T_ATTACH
+        WHERE  attach_id=#{value}
+    </select>
+
+    <insert id="insertAttach" parameterType="Attach" keyProperty="id">
+        INSERT  INTO T_ATTACH (attach_id,attach_filename,attach_size,attach_note_id,attach_user_id,attach_net_disk_id)
+        VALUES (#{id},#{fileName},#{size},#{noteId},#{userId},#{netDiskId})
+    </insert>
+</mapper>

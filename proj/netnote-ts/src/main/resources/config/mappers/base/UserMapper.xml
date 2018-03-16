@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.base.UserDao">
+    <!--<resultMap id="UserResultMap" type="User">-->
+        <!--<id property="id" column="DB_CLOUD_STORAGE.T_USER.id"/>-->
+        <!--<result property="username" column="DB_CLOUD_STORAGE.T_USER.username"/>-->
+        <!--<result property="password" column="DB_CLOUD_STORAGE.T_USER.password"/>-->
+    <!--</resultMap>-->
+
+    <select id="selectUserByUsername" parameterType="string" resultType="User">
+        <!-- 底层的SQL语句 -->
+        select * from DB_CLOUD_STORAGE.T_USER u where u.username=#{value}
+    </select>
+
+    <select id="selectUserById" parameterType="int" resultType="User">
+        SELECT id,username,password from DB_CLOUD_STORAGE.T_USER u WHERE u.id=#{value}
+    </select>
+
+    <select id="selectUserByUsernameAndPassword" parameterType="User" resultType="User">
+        SELECT * FROM DB_CLOUD_STORAGE.T_USER u WHERE u.username=#{username} AND  u.password=#{password}
+    </select>
+
+    <insert id="insertUser" parameterType="User" keyProperty="id">
+        INSERT INTO DB_CLOUD_STORAGE.T_USER  (username,password) VALUES (#{username},#{password})
+    </insert>
+</mapper>

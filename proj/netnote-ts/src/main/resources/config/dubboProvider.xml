@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:util="http://www.springframework.org/schema/util" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:task="http://www.springframework.org/schema/task"
+xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/util 
+http://www.springframework.org/schema/util/spring-util.xsd
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/task 
+http://www.springframework.org/schema/task/spring-task.xsd  
+http://code.alibabatech.com/schema/dubbo    
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd">  
+       
+    <!-- Application name -->    
+    <dubbo:application name="net-note" logger="slf4j" />
+    <!-- registry address, used for service to register itself -->    
+    <dubbo:registry address="${dubbo.address}" />
+    <dubbo:provider accesslog="true"  token="true" timeout="30000" retries="0"/>
+    <dubbo:protocol name="dubbo" port="${net-note.dubbo.provider.port}"/>
+    
+    <!-- ds for base -->
+    <!-- <dubbo:service interface="cn.com.scooper.core.dsapi.service.system.IAuthService" ref="authServiceImpl"  protocol="dubbo" token="false" /> -->
+    
+</beans> 

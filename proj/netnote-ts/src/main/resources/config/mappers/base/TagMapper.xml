@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.base.TagDao">
+    <resultMap id="TagResultMap" type="Tag">
+        <id property="id" column="tag_id"/>
+        <result property="name" column="tag_name"/>
+    </resultMap>
+
+    <resultMap id="NoteResultMap" type="Note">
+        <id property="id" column="note_id"/>
+        <result property="noteName" column="note_name"/>
+        <result property="noteText" column="note_text"/>
+        <result property="createtime" column="note_createtime"/>
+        <result property="parentDirId" column="note_parent_id"/>
+        <result property="userId" column="note_user_id"/>
+    </resultMap>
+
+    <select id="selectTagByName" parameterType="string" resultMap="TagResultMap">
+        SELECT * FROM T_TAG WHERE tag_name=#{value}
+    </select>
+
+    <insert id="insertTag" parameterType="Tag" keyProperty="id">
+        INSERT INTO T_TAG (tag_name) VALUES (#{name})
+    </insert>
+
+    <select id="selectTagById" parameterType="int" resultMap="TagResultMap">
+        SELECT * FROM T_TAG WHERE tag_id=#{value}
+    </select>
+
+    <select id="selectTagsByNote" parameterType="Note" resultMap="TagResultMap">
+        SELECT * FROM  T_TAG t
+          JOIN T_TAG_NOTE tn ON t.tag_id=tn.tag_id
+          WHERE tn.note_id=#{id}
+    </select>
+
+    <!--这里还需要删除空白的标签 -->
+    <delete id="deleteTagByNote" parameterType="Note">
+        DELETE  FROM T_TAG_NOTE WHERE note_id=#{value}
+    </delete>
+
+    <!--<delete id="deleteBlankTag" >-->
+        <!--DELETE * FROM  T_TAG WHERE tag_id!=(-->
+          <!--SELECT tag_id FROM T_TAG_NOTE)-->
+    <!--</delete>-->
+
+    <select id="selectNoteByTags" resultMap="NoteResultMap" parameterType="cn.showclear.www.pojo.common.UsingSearchNotes">
+        SELECT * FROM T_NOTE n
+          LEFT JOIN T_TAG_NOTE tn ON n.note_id=tn.note_id
+          LEFT JOIN T_TAG t ON t.tag_id=tn.tag_id
+          LEFT JOIN DB_CLOUD_STORAGE.T_USER u ON u.id=n.note_user_id
+          <where>
+              u.username=#{username} AND
+              t.tag_name  REGEXP
+              Concat(
+              <foreach item="item" collection="tagNamesd" index="index" separator=",'.*','|','.*'," open="'.*'," close=",'.*'">
+                  #{item}
+              </foreach>
+              )
+          </where>
+        GROUP BY n.note_name
+    </select>
+
+</mapper>

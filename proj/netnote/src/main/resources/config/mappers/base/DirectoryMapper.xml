@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.base.DirectoryDao">
+    <resultMap id="DirectoryResultMap" type="Directory">
+        <id property="id" column="dir_id"/>
+        <result property="DirName" column="dir_name"/>
+        <result property="parentId" column="dir_parent_id"/>
+        <result property="userId" column="dir_user_id"/>
+    </resultMap>
+    <select id="selectDirectoriesByParentId" parameterType="int" resultMap="DirectoryResultMap">
+        SELECT * FROM T_DIRECTORY WHERE  dir_parent_id=#{int}
+    </select>
+
+    <select id="selectDirectoryByUsername" parameterType="string" resultMap="DirectoryResultMap">
+        <!-- 底层的SQL语句 -->
+        select * from T_DIRECTORY d
+        JOIN DB_CLOUD_STORAGE.T_USER u on d.dir_user_id=u.id
+        where u.username=#{value}
+    </select>
+
+    <select id="selectDirectoryById" parameterType="int" resultMap="DirectoryResultMap">
+        SELECT * FROM  T_DIRECTORY
+        WHERE dir_id=#{value}
+    </select>
+
+    <delete id="deleteDirectoryById" parameterType="int">
+        DELETE  FROM T_DIRECTORY
+        WHERE dir_id=#{value}
+    </delete>
+
+    <insert id="insertDirectory" parameterType="Directory" keyProperty="id">
+        INSERT INTO T_DIRECTORY (dir_id,dir_name,dir_parent_id,dir_user_id)
+        VALUES (#{id},#{DirName},#{parentId},#{userId})
+    </insert>
+
+    <update id="editDirectoryWithNameAndParentDir" parameterType="Directory">
+        UPDATE T_DIRECTORY SET dir_name = #{DirName}, dir_parent_id = #{parentId}
+        WHERE dir_id=#{id}
+    </update>
+</mapper>

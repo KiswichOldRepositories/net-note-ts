@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.base.NoteDao">
+    <resultMap id="NoteResultMap" type="Note">
+        <id property="id" column="note_id"/>
+        <result property="noteName" column="note_name"/>
+        <result property="noteText" column="note_text"/>
+        <result property="createtime" column="note_createtime"/>
+        <result property="parentDirId" column="note_parent_id"/>
+        <result property="userId" column="note_user_id"/>
+    </resultMap>
+
+    <select id="selectNotesByUsername" parameterType="string" resultMap="NoteResultMap">
+        SELECT * FROM  T_NOTE  n
+        JOIN DB_CLOUD_STORAGE.T_USER u ON u.id=n.note_user_id
+        WHERE u.username=#{value}
+    </select>
+
+    <insert id="insertNote" parameterType="Note" keyProperty="id">
+        INSERT  INTO  T_NOTE (note_name,note_text,note_createtime,note_parent_id,note_user_id)
+        VALUES(#{noteName},#{noteText},#{createtime},#{parentDirId},#{userId})
+    </insert>
+
+    <select id="selectNoteById" parameterType="int" resultMap="NoteResultMap">
+        SELECT * FROM T_NOTE WHERE note_id=#{value}
+    </select>
+
+    <update id="updateNoteByTextAndNameAndDir" parameterType="Note">
+        UPDATE T_NOTE SET note_text=#{noteText} ,note_name=#{noteName}, note_parent_id=#{parentDirId}
+        WHERE note_id=#{id}
+    </update>
+
+    <insert id="addTag2Note" parameterType="cn.showclear.www.pojo.common.TagAndNote">
+        INSERT INTO T_TAG_NOTE (tag_id,note_id) VALUE (#{tagId},#{noteId})
+    </insert>
+
+    <delete id="deleteTagFromNote" parameterType="cn.showclear.www.pojo.common.TagAndNote">
+        DELETE  FROM T_TAG_NOTE WHERE tag_id=#{tagId} AND note_id=#{noteId}
+    </delete>
+
+    <delete id="deleteNoteById" parameterType="int">
+        DELETE  FROM T_NOTE WHERE note_id=#{id}
+    </delete>
+
+    <select id="selectNotesByParentId" parameterType="int" resultMap="NoteResultMap">
+        SELECT * FROM T_NOTE WHERE  note_parent_id=#{int}
+    </select>
+</mapper>

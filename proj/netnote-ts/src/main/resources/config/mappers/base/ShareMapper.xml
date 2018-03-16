@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.base.ShareDao">
+    <resultMap id="ShareResultMap" type="Share">
+        <id property="id" column="share_id"/>
+        <result property="url" column="share_url"/>
+        <result property="noteOrDirId" column="share_note_or_dir_id"/>
+        <result property="type" column="share_type"/>
+        <result property="userId" column="share_user_id"/>
+    </resultMap>
+
+    <select id="selectSharesByUserId" parameterType="int" resultMap="ShareResultMap">
+        SELECT * FROM T_SHARE WHERE share_user_id=#{int}
+    </select>
+
+    <select id="selectSharesByUsername" parameterType="string" resultMap="ShareResultMap">
+        SELECT * FROM T_SHARE s
+        JOIN DB_CLOUD_STORAGE.T_USER u ON u.id=s.share_user_id
+        WHERE  u.username=#{value}
+    </select>
+
+    <select id="selectShareByUrl" parameterType="string" resultMap="ShareResultMap">
+        SELECT * FROM T_SHARE WHERE share_url=#{value}
+    </select>
+
+    <select id="selectShareById" parameterType="int" resultMap="ShareResultMap">
+        SELECT * FROM T_SHARE WHERE  share_id=#{id}
+    </select>
+
+    <delete id="deleteShareById" parameterType="int">
+        DELETE  FROM  T_SHARE WHERE share_id=#{value}
+    </delete>
+
+    <insert id="insertShare" parameterType="Share" keyProperty="id">
+        INSERT  INTO T_SHARE (share_url,share_note_or_dir_id,share_type,share_user_id)
+        VALUES (#{url},#{noteOrDirId},#{type},#{userId})
+    </insert>
+</mapper>

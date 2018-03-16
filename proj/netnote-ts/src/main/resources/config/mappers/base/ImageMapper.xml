@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.base.ImageDao">
+
+    <resultMap id="ImageResultMap" type="Image">
+        <id property="id" column="image_id"/>
+        <result property="url" column="image_url"/>
+        <result property="localPath" column="image_local_path" />
+        <result property="imageName" column="image_name"/>
+    </resultMap>
+
+    <insert id="inserImg" parameterType="Image" keyProperty="id" >
+        INSERT  INTO  T_IMAGE (image_url,image_lacalPath,image_name)
+        VALUES (#{url},#{localPath},#{imageName})
+    </insert>
+
+    <select id="selectImageByUrl" parameterType="string" resultMap="ImageResultMap">
+        SELECT * FROM  T_IMAGE WHERE  image_url=#{value}
+    </select>
+</mapper>

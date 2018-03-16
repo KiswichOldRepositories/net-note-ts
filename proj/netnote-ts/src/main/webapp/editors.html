@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Net-Note</title>
+    <script type="text/javascript">
+        var contextPath = location.href.substring(0, location.href.lastIndexOf('/') + 1);
+//        var contextPath = "http://localhost:63342/net-note/";
+        console.log(contextPath);
+    </script>
+    <script  src="js/lib/require/require.js"></script>
+    <script src="js/require-config.js"></script>
+    <script>
+        requirejs([contextPath+'/js/test/test.js']);
+    </script>
+
+
+    <link rel="stylesheet" href="plugin/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="plugin/bootstrap/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="plugin/ztree/zTreeStyle/zTreeStyle.css">
+    <link rel="stylesheet" href="css/net-note.css">
+
+</head>
+<body>
+
+</body>
+</html>
