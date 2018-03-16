@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.UserMapper">
+    <select id="selectUserByUsername" parameterType="string" resultType="cn.showclear.www.pojo.common.User">
+        <!-- 底层的SQL语句 -->
+        select * from T_USER where username=#{username}
+    </select>
+    <select id="selectUserById" parameterType="int" resultType="cn.showclear.www.pojo.common.User">
+        SELECT  * from T_USER where id=#{value}
+    </select>
+
+    <insert id="insertUser" parameterType="cn.showclear.www.pojo.common.User">
+        INSERT INTO T_USER (username, password) VALUE (#{username},#{password})
+    </insert>
+</mapper>

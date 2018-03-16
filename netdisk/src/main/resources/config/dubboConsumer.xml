@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:util="http://www.springframework.org/schema/util" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:task="http://www.springframework.org/schema/task"
+xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" 
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://code.alibabatech.com/schema/dubbo    
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd" >
+
+    <dubbo:application name="net-disk-consumer" logger="slf4j" />
+    <dubbo:registry address="${dubbo.address}" timeout="10000" file="/icooper/appdata/.dubbo/net-disk.cache"/>
+    
+    <!-- check="false"：服务者与消费者程序启动先后顺序不受影响 -->
+    <dubbo:consumer check="false"/>
+    
+   	<!-- thirdpart-server -->
+   	<!-- <dubbo:reference id="orgMemberServiceImpl" interface="cn.com.scooper.core.dsapi.service.contacts.IOrgMemberService"/> -->
+	
+</beans>

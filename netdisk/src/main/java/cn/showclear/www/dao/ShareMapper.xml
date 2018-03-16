@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.ShareMapper">
+    <select id="selectShareByURL" parameterType="string" resultType="cn.showclear.www.pojo.common.Share">
+        <!-- 底层的SQL语句 -->
+        SELECT id id,share_flag shareFlag,share_f_id shareFID,share_type shareType,share_user_id userID FROM T_SHARE
+        WHERE share_flag=#{value}
+    </select>
+
+    <select id="selectShareByUsername" parameterType="string" resultType="cn.showclear.www.pojo.common.Share">
+         SELECT s.id id,share_flag shareFlag,share_f_id shareFID,share_type shareType,share_user_id userID FROM T_SHARE s
+         LEFT JOIN T_USER u ON s.share_user_id=u.id
+         WHERE  u.username=#{value}
+    </select>
+
+    <select id="selectShareById" parameterType="int" resultType="cn.showclear.www.pojo.common.Share">
+        SELECT s.id id,share_flag shareFlag,share_f_id shareFID,share_type shareType,share_user_id userID FROM T_SHARE s
+        WHERE s.id=#{value}
+    </select>
+
+    <select id="selectShareFileByUsername" parameterType="string" resultType="cn.showclear.www.pojo.common.LoadFile">
+        SELECT fi.id id,file_name fileName,folder_id floderID,localurl localURL,fi.createtime createTime,file_size fileSize from T_FILE fi
+        WHERE fi.id=
+        (SELECT s.share_f_id FROM  T_SHARE s WHERE s.share_type=0 AND s.share_user_id=
+        (SELECT u.id FROM  T_USER u WHERE  u.username=#{value}))
+    </select>
+    <select id="selectShareFolderByUsername" parameterType="string" resultType="cn.showclear.www.pojo.common.Folder">
+        SELECT f.id  id,folder_name  folderName,f.createtime  createtime,parent_folder_id  parentFolderID,username_id  usernameID from T_FOLDER f
+        WHERE f.id=
+        (SELECT s.share_f_id FROM T_SHARE s WHERE  s.share_type=1 AND  s.share_user_id =
+        (SELECT u.id from T_USER u WHERE u.username=#{value}))
+    </select>
+
+    <insert id="insertShare" parameterType="cn.showclear.www.pojo.common.Share">
+        INSERT  into T_SHARE( id,share_flag,share_f_id,share_type,share_user_id)
+        values( #{id},#{shareFlag},#{shareFID},#{shareType},#{userID})
+    </insert>
+
+    <delete id="deleteShareByID" parameterType="int">
+        DELETE  FROM T_SHARE WHERE id=#{value}
+    </delete>
+</mapper>

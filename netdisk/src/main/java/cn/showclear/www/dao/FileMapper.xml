@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.FileMapper">
+    <select id="selectFilesByUsename" parameterType="string" resultType="cn.showclear.www.pojo.common.LoadFile">
+        SELECT fi.id id,file_name fileName,folder_id floderID,localurl localURL,fi.createtime createTime,file_size fileSize from T_FILE fi
+        LEFT JOIN T_FOLDER fo on fi.folder_id=fo.id
+		LEFT JOIN T_USER u on u.id=fo.username_id
+		where u.username=#{value}
+    </select>
+
+    <select id="selectFoldersByFolderID" parameterType="int" resultType="cn.showclear.www.pojo.common.LoadFile">
+        SELECT fi.id id,file_name fileName,folder_id floderID,localurl localURL,fi.createtime createTime,file_size fileSize from T_FILE fi
+        WHERE folder_id=#{value}
+    </select>
+
+    <insert id="insertFile" parameterType="cn.showclear.www.pojo.common.Folder">
+        INSERT  INTO  T_FILE (file_name,localurl,folder_id,createtime,file_size) VALUE (#{fileName},#{localURL},#{floderID},#{createTime},#{fileSize})
+    </insert>
+
+    <select id="selectFileByID" parameterType="int" resultType="cn.showclear.www.pojo.common.LoadFile">
+       SELECT id id,file_name fileName,folder_id floderID,localurl localURL,createtime createTime,file_size fileSize from T_FILE where id=#{value}
+    </select>
+
+    <update id="updataFileName" parameterType="cn.showclear.www.pojo.common.LoadFile">
+        UPDATE T_FILE SET file_name=#{fileName} WHERE  id=#{id}
+    </update>
+
+    <delete id="deleteFile" parameterType="cn.showclear.www.pojo.common.LoadFile">
+        DELETE FROM T_FILE WHERE id=#{id}
+    </delete>
+</mapper>

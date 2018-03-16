@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    padding: 50px;
+}
+.center{
+    padding: 10% 25%;
+}
+.title-center{
+    text-align: center;
+}
+
+.btn-center{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.btn-width{
+    width: 140px;
+    height: 30px;
+}
+
+.label-center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}

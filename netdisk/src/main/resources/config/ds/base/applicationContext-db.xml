@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:cache="http://www.springframework.org/schema/cache" 
+	xsi:schemaLocation=" 
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd"
+	default-autowire="byName">
+	<!--
+		注意上面的default-autowire="byName"，如果没有这个声明不会被注入
+	-->
+
+	<description>Spring-database配置</description>
+	
+	<!-- MyBatis配置 -->
+	<bean id="mybatisSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:/config/ds/base/sqlMapConfig.xml" />
+		<!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
+		<property name="typeAliasesPackage" value="cn.showclear.www.pojo.base" />
+		<!-- 显式指定Mapper文件位置 -->
+		<!--<property name="mapperLocations" value="classpath:/config/mappers/base/**/*.xml" />-->
+	</bean>
+	
+	<!-- 扫描basePackage下所有以@Repository标识的 接口-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="cn.showclear.www.dao.base" />
+		<property name="annotationClass" value="org.springframework.stereotype.Repository"/>
+		<property name="sqlSessionFactoryBeanName" value="mybatisSqlSessionFactory" />
+	</bean>
+
+	<!--
+		连接池配置:
+		初始化连接:5 ,最大连接数量:10 , 最小空闲连接:2,最大空闲连接:10 超时等待时间以毫秒为单位:1000ms , 是否在自动回收超时连接的时候打印连接的超时错误：是 
+		是否自动回收超时连接：是   超时时间(以秒数为单位)：180s 
+	-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${db.base.driver}" />
+		<property name="url" value="${db.base.url}" />
+		<property name="username" value="${db.base.user}" />
+		<property name="password" value="${db.base.password}" />
+		<property name="initialSize" value="${db.base.initialSize}"></property>
+		<property name="maxActive" value="${db.base.maxActive}"></property>
+		<property name="minIdle" value="${db.base.minIdle}"></property>
+		<property name="maxIdle" value="${db.base.maxIdle}"></property>
+		<property name="maxWait" value="${db.base.maxWait}"></property>
+		<property name="logAbandoned" value="true" ></property>
+		<property name="removeAbandoned" value="true" ></property>
+		<property name="removeAbandonedTimeout" value="180" ></property>
+		<property name="validationQuery" value="select now() from dual"/>
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- 配置事务特性 -->
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="select*" read-only="true" />
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="query*" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 配置哪些类的方法需要进行事务管理 -->
+	<aop:config>
+		<aop:pointcut id="allManagerMethod" expression="execution(* cn.showclear.*..*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="allManagerMethod" />
+	</aop:config>
+	
+</beans>

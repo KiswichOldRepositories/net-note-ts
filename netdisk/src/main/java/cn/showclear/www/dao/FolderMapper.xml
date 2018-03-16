@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 命名空间mapper：com.model.professional -->
+<mapper namespace="cn.showclear.www.dao.FolderMapper">
+    <select id="findFoldersByUser" parameterType="cn.showclear.www.pojo.common.User" resultType="cn.showclear.www.pojo.common.Folder">
+select id  id,folder_name  folderName,createtime  createtime,parent_folder_id  parentFolderID,username_id  usernameID from T_FOLDER where username_id=#{id}
+</select>
+    <select id="selectFolderById" parameterType="int" resultType="cn.showclear.www.pojo.common.Folder">
+SELECT id  id,folder_name  folderName ,createtime  createtime,parent_folder_id  parentFolderID,username_id  usernameID from T_FOLDER where id=#{value}
+</select>
+    <select id="selectFoldersByParentsId" parameterType="int" resultType="cn.showclear.www.pojo.common.Folder">
+        SELECT id  id,folder_name  folderName ,createtime  createtime,parent_folder_id  parentFolderID,username_id  usernameID from T_FOLDER WHERE parent_folder_id=#{value}
+    </select>
+
+    <insert id="createFolder" parameterType="cn.showclear.www.pojo.common.Folder">
+INSERT INTO T_FOLDER (folder_name, createtime, parent_folder_id, username_id) VALUE (#{folderName},#{createTime},#{parentFolderID},#{usernameID})
+</insert>
+    <update id="editFolder" parameterType="cn.showclear.www.pojo.common.Folder">
+UPDATE T_FOLDER SET folder_name = #{folderName} WHERE id = #{id}
+</update>
+
+    <delete id="deleteFolder" parameterType="cn.showclear.www.pojo.common.Folder">
+        DELETE  FROM T_FOLDER WHERE id=#{id}
+    </delete>
+
+</mapper>
